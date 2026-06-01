@@ -1,30 +1,36 @@
 # Dental Portfolio — Dr. Ahmed Wagdy Salama
 
-A modern, single-page portfolio website for a general dentist built with **Angular 18** (standalone components). The site showcases the doctor's clinical work, education, skills, and patient testimonials with an elegant, responsive UI.
+A high-performance, single-page portfolio website for a general dentist built with **Angular 18** (standalone component architecture). The site presents clinical casework, credentials, skills, and patient testimonials through an interactive, mobile-responsive interface.
 
 ## Features
 
-- **Hero Section** — Tagline, profile image with animated glow rings, WhatsApp CTA
-- **About** — Background, operating experience across 4 clinics
-- **Education** — Certificates and courses completed
-- **Portfolio** — Tabbed before/after gallery with image pairs:
-  - Restorative, Prosthodontics, Endodontics, Surgery, Bleaching
-  - Before/after slider component, lightbox viewer, "Show More" pagination
-- **Skills** — Three groups: Clinical, Professional & Technical, Software & Marketing
-- **Testimonials** — Patient reviews with star ratings
-- **Contact** — Appointment booking form (ReactiveForms), phone/email/location info, WhatsApp link
-- **Floating WhatsApp** — Persistent quick-contact button
-- **Footer** — Social links and practice info
+### Sections
+| Section | Highlights |
+|---------|------------|
+| **Hero** | Tagline with staggered text entrance, profile image with animated glow rings, spring-entrance badge, WhatsApp CTA |
+| **About** | Professional background, clinical experience across 4 clinics, scroll-reveal animation |
+| **Education** | Certificate grid with unique SVG icons per credential (microscope, smile, scissors, sparkles, heart-pulse, shield-check, camera), staggered entrance |
+| **Portfolio** | Tabbed before/after gallery (Restorative, Prosthodontics, Endodontics, Surgery, Bleaching), draggable before/after slider, lightbox viewer, "Show More" pagination |
+| **Skills** | Three grouped skill cards (Clinical, Professional & Technical, Software & Marketing) with staggered scroll-reveal |
+| **Testimonials** | Horizontal auto-scroll carousel with mouse/touch drag support, pause-on-hover, infinite loop, star ratings |
+| **Contact** | Appointment form (ReactiveForms with validation), clinic info, clickable map placeholder (Tanta, Egypt) |
+| **Footer** | Social links, practice information, back-to-top |
+
+### Interactive Elements
+- **Floating WhatsApp button** — Spring-entrance animation (cubic-bezier 0.34, 1.56, 0.64, 1) with 1.5s delay, persistent quick-contact
+- **Sticky navbar** — Smooth-scroll navigation with active section tracking
+- **Before/after slider** — Drag-to-reveal comparison with lightbox image viewer
+- **Scroll-reveal animations** — IntersectionObserver-driven entrance animations across all sections with configurable stagger delays
 
 ## Built With
 
 | Technology | Purpose |
-|-----------|---------|
+|------------|---------|
 | Angular 18 | Framework (standalone APIs, signals) |
-| TypeScript | Language |
-| SCSS | Styling with CSS custom properties |
+| TypeScript | Language (strict mode) |
+| SCSS | Styling with CSS custom properties & keyframe animations |
 | RxJS | Reactive data handling |
-| ReactiveFormsModule | Form validation |
+| Angular ReactiveForms | Form validation & submission |
 | Google Fonts (Inter + Playfair Display) | Typography |
 
 ## Getting Started
@@ -46,37 +52,42 @@ npm run build
 src/
 ├── app/
 │   ├── components/
-│   │   ├── about/          # About section
-│   │   ├── contact/        # Contact form + info
-│   │   ├── education/      # Certificates display
-│   │   ├── footer/         # Site footer
-│   │   ├── hero/           # Hero banner
-│   │   ├── navbar/         # Sticky navigation
-│   │   ├── portfolio/      # Tabbed before/after gallery
-│   │   ├── shared/         # Reusable: before-after-slider,
-│   │   │                   #   floating-whatsapp, lightbox
-│   │   ├── skills/         # Skill groups
-│   │   └── testimonials/   # Patient reviews
-│   ├── models/             # TypeScript interfaces
-│   ├── services/           # Portfolio data & WhatsApp link
-│   └── app.component.ts    # Root component
-├── assets/                 # Images grouped by category
-├── index.html
-├── main.ts                 # App bootstrap
-└── styles.scss             # Global styles & variables
+│   │   ├── about/              # About section
+│   │   ├── contact/            # Contact form + map placeholder
+│   │   ├── education/          # Certificate grid with SVG icons
+│   │   ├── footer/             # Site footer
+│   │   ├── hero/               # Hero banner with stagger animations
+│   │   ├── navbar/             # Sticky navigation
+│   │   ├── portfolio/          # Tabbed before/after gallery
+│   │   ├── shared/             # Reusable components
+│   │   │   ├── before-after-slider/  # Drag-to-reveal comparison
+│   │   │   ├── floating-whatsapp/    # Spring-entrance contact button
+│   │   │   └── lightbox/             # Full-screen image viewer
+│   │   ├── skills/             # Skill group cards
+│   │   └── testimonials/       # Draggable auto-scroll carousel
+│   ├── directives/
+│   │   └── scroll-reveal.directive.ts  # IntersectionObserver directive
+│   ├── models/                 # TypeScript interfaces
+│   ├── services/               # Portfolio data + shared constants
+│   └── app.component.ts        # Root component
+├── assets/                     # Images organized by category
+├── index.html                  # Entry point
+├── main.ts                     # App bootstrap + global scroll observer
+└── styles.scss                 # Global styles, CSS vars, keyframes
 ```
 
-## Design
+## Design System
 
-- **Color palette**: Dark navy primary (#1a2332), teal secondary (#0099cc), gold accent (#d4a017)
+- **Color palette**: Dark navy primary (`#1a2332`), teal secondary (`#0099cc`), gold accent (`#d4a017`)
 - **Fonts**: Playfair Display (headings), Inter (body)
-- **Responsive**: Fully mobile-adaptive layout
-- **Animations**: fadeInUp, float, pulse-glow
+- **Responsive**: Mobile-first, fully adaptive layout
+- **Animations**: `fadeInUp`, `scaleIn`, `float`, `pulse-glow` keyframes; scroll-triggered `reveal`/`revealed` classes; spring-easing entrance transitions
+- **Icons**: Custom inline SVGs in Education section; Font Awesome social icons
 
 ## Contact
 
-- Dr. Ahmed Wagdy Salama
-- 📍 Tanta, Egypt
-- 📧 wagdyahmed304@gmail.com
-- 📱 [+201028654881](tel:+201028654881)
-- 💬 [WhatsApp](https://wa.me/201028654881)
+- **Dr. Ahmed Wagdy Salama** — General Dentist
+- **Location**: Tanta, Egypt
+- **Email**: [wagdyahmed304@gmail.com](mailto:wagdyahmed304@gmail.com)
+- **Phone**: [+201028654881](tel:+201028654881)
+- **WhatsApp**: [wa.me/201028654881](https://wa.me/201028654881?text=Hello%20Dr.%20Ahmed,%20I%20would%20like%20to%20book%20an%20appointment)
