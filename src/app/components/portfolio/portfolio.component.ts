@@ -31,7 +31,6 @@ export class PortfolioComponent {
     { value: 'bleaching', label: 'Bleaching' },
   ];
 
-  // Visible pairs per tab
   visiblePairs: Record<string, number> = {
     restorative: 6,
     prosthodontics: 6,
@@ -40,7 +39,6 @@ export class PortfolioComponent {
     endodontics: 99,
   };
 
-  // Lightbox state
   lightboxImages = signal<GalleryImage[]>([]);
   lightboxIndex = signal(0);
   lightboxOpen = signal(false);

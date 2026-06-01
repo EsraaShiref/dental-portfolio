@@ -1,6 +1,6 @@
-import { Component, signal, HostListener, inject } from '@angular/core';
+import { Component, signal, HostListener } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { PortfolioDataService, WA_LINK } from '../../services/portfolio-data.service';
+import { WA_LINK } from '../../services/portfolio-data.service';
 
 @Component({
   selector: 'app-navbar',
@@ -10,20 +10,28 @@ import { PortfolioDataService, WA_LINK } from '../../services/portfolio-data.ser
   styleUrls: ['./navbar.component.scss'],
 })
 export class NavbarComponent {
-  data = inject(PortfolioDataService);
   waLink = WA_LINK;
 
   mobileOpen = signal(false);
   activeSection = signal('hero');
 
+  navLinks = [
+    { name: 'Home', href: 'hero' },
+    { name: 'About', href: 'about' },
+    { name: 'Education', href: 'education' },
+    { name: 'Portfolio', href: 'portfolio' },
+    { name: 'Skills', href: 'skills' },
+    { name: 'Contact', href: 'contact' },
+  ];
+
   @HostListener('window:scroll')
   onScroll() {
-    const ids = ['hero', 'about', 'education', 'portfolio', 'skills', 'contact'];
+    const ids = this.navLinks.map((l) => l.href);
     for (const id of [...ids].reverse()) {
       const el = document.getElementById(id);
       if (el) {
         const rect = el.getBoundingClientRect();
-        if (rect.top <= 120) {
+        if (rect.top <= 160) {
           this.activeSection.set(id);
           return;
         }
@@ -38,6 +46,6 @@ export class NavbarComponent {
   }
 
   toggleMobile() {
-    this.mobileOpen.update(v => !v);
+    this.mobileOpen.update((v) => !v);
   }
 }

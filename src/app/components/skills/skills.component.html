@@ -1,26 +1,59 @@
-<section id="skills" class="skills reveal">
-  <div class="container">
-    <div class="section-header">
-      <h2>Core Competencies</h2>
-      <div class="divider"></div>
+<section id="skills" class="py-24 bg-muted/30 reveal">
+  <div class="max-w-7xl mx-auto px-4 md:px-6">
+    <!-- Header -->
+    <div class="text-center mb-16">
+      <h2 class="text-3xl md:text-4xl font-bold mb-4">Core Competencies</h2>
+      <div class="w-20 h-1 bg-secondary mx-auto rounded-full"></div>
     </div>
 
-    <div class="skills-grid">
+    <div class="grid lg:grid-cols-3 gap-8">
       @for (group of skillGroups; track group.title; let i = $index) {
-        <div class="skill-card card reveal" [class]="group.colorClass" [style.transition-delay]="(0.1 + i * 0.1) + 's'">
-          <div class="skill-card-body">
-            <div class="skill-icon" [class]="group.iconBg">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M4.8 2.3A.3.3 0 1 0 5 2H4a2 2 0 0 0-2 2v5a6 6 0 0 0 6 6v0a6 6 0 0 0 6-6V4a2 2 0 0 0-2-2h-1a.2.2 0 1 0 .3.3"/>
-                <path d="M8 15v1a6 6 0 0 0 6 6v0a6 6 0 0 0 6-6v-4"/>
-                <circle cx="20" cy="10" r="2"/>
-              </svg>
+        <div
+          class="h-full border-t-4 shadow-md transition-all duration-300 ease-out hover:shadow-xl hover:-translate-y-1.5 rounded-xl bg-card border-border/50"
+          [class.border-t-secondary]="group.borderColor === 'border-t-secondary'"
+          [class.border-t-primary]="group.borderColor === 'border-t-primary'"
+          [class.border-t-accent]="group.borderColor === 'border-t-accent'"
+          [style.transition-delay]="(0.1 + i * 0.1) + 's'"
+        >
+          <div class="p-6">
+            <!-- Icon -->
+            <div
+              class="w-12 h-12 rounded-lg flex items-center justify-center mb-4 transition-all duration-300 ease-out"
+              [class]="group.iconBg"
+              [style.transition-timing-function]="'cubic-bezier(0.34, 1.56, 0.64, 1)'"
+            >
+              @if (i === 0) {
+                <!-- Syringe icon for Clinical Skills -->
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="w-6 h-6" [class]="group.iconColor">
+                  <path d="m18 2 4 4"/>
+                  <path d="m17 7 3-3"/>
+                  <path d="M19 9 8 20a3 3 0 0 1-5-5L14 5"/>
+                  <path d="m9 11 4 4"/>
+                  <path d="M5 19l-3 3"/>
+                  <path d="m14 4 6 6"/>
+                </svg>
+              } @else if (i === 1) {
+                <!-- Stethoscope icon for Professional & Technical -->
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="w-6 h-6" [class]="group.iconColor">
+                  <path d="M4.8 2.3A.3.3 0 1 0 5 2H4a2 2 0 0 0-2 2v5a6 6 0 0 0 6 6v0a6 6 0 0 0 6-6V4a2 2 0 0 0-2-2h-1a.2.2 0 1 0 .3.3"/>
+                  <path d="M8 15v1a6 6 0 0 0 6 6v0a6 6 0 0 0 6-6v-4"/>
+                  <circle cx="20" cy="10" r="2"/>
+                </svg>
+              } @else {
+                <!-- ShieldCheck icon for Software & Marketing -->
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="w-6 h-6" [class]="group.iconColor">
+                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"/>
+                  <path d="m9 12 2 2 4-4"/>
+                </svg>
+              }
             </div>
-            <h3>{{ group.title }}</h3>
-            <p class="skill-desc">{{ group.desc }}</p>
-            <div class="skill-badges">
+            <h3 class="text-lg font-semibold mb-1">{{ group.title }}</h3>
+            <p class="text-sm text-muted-foreground mb-5">{{ group.desc }}</p>
+            <div class="flex flex-wrap gap-2">
               @for (skill of group.skills; track skill) {
-                <span class="badge" [class]="group.badgeClass">{{ skill }}</span>
+                <span class="inline-flex items-center px-2.5 py-1 rounded text-xs font-semibold transition-all duration-300 ease-out" [class]="group.badgeClass">
+                  {{ skill }}
+                </span>
               }
             </div>
           </div>

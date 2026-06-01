@@ -1,32 +1,45 @@
-<nav class="navbar">
-  <div class="container navbar-inner">
+<nav class="sticky top-0 z-50 w-full backdrop-blur-md bg-background/80 border-b border-border/40 transition-all duration-300">
+  <div class="container mx-auto px-4 md:px-6 h-20 flex items-center justify-between">
     <!-- Logo -->
-    <div class="logo" (click)="scrollTo('hero')">
-      <div class="logo-badge">AS</div>
-      <span class="logo-name">Dr. Ahmed Wagdy Salama</span>
+    <div class="flex items-center gap-2 cursor-pointer" (click)="scrollTo('hero')">
+      <div class="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-primary-foreground font-serif font-bold text-xl shadow-sm">
+        AS
+      </div>
+      <span class="font-serif font-semibold text-lg tracking-tight hidden sm:block">
+        Dr. Ahmed Wagdy Salama
+      </span>
     </div>
 
     <!-- Desktop Links -->
-    <div class="nav-links">
-      @for (link of data.navLinks; track link.href) {
-        <button
-          class="nav-link"
-          [class.active]="activeSection() === link.href"
-          (click)="scrollTo(link.href)"
-        >
-          {{ link.name }}
-          @if (activeSection() === link.href) {
-            <span class="underline-indicator"></span>
-          }
-        </button>
-      }
-      <button class="btn btn-secondary btn-rounded" (click)="scrollTo('contact')">
+    <div class="hidden md:flex items-center gap-6">
+      <div class="flex items-center gap-6 text-sm font-medium text-muted-foreground">
+        @for (link of navLinks; track link.href) {
+          <button
+            (click)="scrollTo(link.href)"
+            class="relative hover:text-primary transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring rounded px-2 py-1"
+            [class.text-primary]="activeSection() === link.href"
+            [class.font-semibold]="activeSection() === link.href"
+          >
+            {{ link.name }}
+            @if (activeSection() === link.href) {
+              <span class="absolute -bottom-0.5 left-0 right-0 h-[2px] bg-secondary rounded-full transition-all duration-300"></span>
+            }
+          </button>
+        }
+      </div>
+      <button
+        (click)="scrollTo('contact')"
+        class="rounded-full px-6 py-2.5 bg-secondary hover:bg-secondary/90 text-secondary-foreground text-sm font-medium shadow-md transition-all hover:shadow-lg"
+      >
         Book Appointment
       </button>
     </div>
 
     <!-- Mobile Toggle -->
-    <button class="mobile-toggle" (click)="toggleMobile()">
+    <button
+      class="md:hidden p-2 text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring rounded-md"
+      (click)="toggleMobile()"
+    >
       @if (mobileOpen()) {
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
           <path d="M18 6 6 18M6 6l12 12"/>
@@ -41,11 +54,19 @@
 
   <!-- Mobile Menu -->
   @if (mobileOpen()) {
-    <div class="mobile-menu">
-      @for (link of data.navLinks; track link.href) {
-        <button class="mobile-link" (click)="scrollTo(link.href)">{{ link.name }}</button>
+    <div class="md:hidden absolute top-20 left-0 w-full bg-background border-b border-border/40 shadow-lg py-4 px-6 flex flex-col gap-4">
+      @for (link of navLinks; track link.href) {
+        <button
+          (click)="scrollTo(link.href)"
+          class="text-left py-2 font-medium hover:text-primary transition-colors border-b border-border/40 last:border-0"
+        >
+          {{ link.name }}
+        </button>
       }
-      <button class="btn btn-primary w-full" (click)="scrollTo('contact')">
+      <button
+        (click)="scrollTo('contact')"
+        class="w-full mt-2 rounded-md px-4 py-2.5 bg-secondary hover:bg-secondary/90 text-secondary-foreground text-sm font-medium shadow-md transition-all"
+      >
         Book Appointment
       </button>
     </div>

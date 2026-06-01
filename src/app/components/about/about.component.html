@@ -1,57 +1,64 @@
-<section id="about" class="about reveal">
-  <div class="container">
-    <div class="section-header">
-      <h2>About Me</h2>
-      <div class="divider"></div>
+<section id="about" class="py-24 bg-muted/30">
+  <div class="max-w-4xl mx-auto px-4 md:px-6">
+    <!-- Header -->
+    <div class="text-center mb-16">
+      <h2 class="text-3xl md:text-4xl font-bold mb-4">About Me</h2>
+      <div class="w-20 h-1 bg-secondary mx-auto rounded-full"></div>
     </div>
 
-    <div class="about-grid">
-      <!-- Text -->
-      <div class="about-text reveal reveal-delay-1">
-        <p class="about-quote">
+    <div class="grid md:grid-cols-2 gap-12 items-center">
+      <!-- Left: Text -->
+      <div class="space-y-6 text-muted-foreground leading-relaxed reveal">
+        <p class="text-lg text-foreground font-medium border-l-4 border-secondary pl-4 py-1">
           Seeking a leading position in a prepared clinic, focused on general dentistry, dental photography, and marketing.
         </p>
         <p>
           With a deep passion for restoring function and aesthetics, I approach every case with a commitment to excellence. My clinical interests lie strongly in
-          <strong>composite surgery, fixed prosthodontics, and bleaching</strong>.
+          <strong class="text-foreground">composite surgery, fixed prosthodontics, and bleaching</strong>.
         </p>
         <p>
           I believe that modern dentistry is as much an art as it is a science. That's why I've invested in advanced training and my own
-          <strong>professional dental loupes</strong> to ensure the highest level of precision in every procedure.
+          <strong class="text-foreground">professional dental loupes</strong> to ensure the highest level of precision in every procedure.
         </p>
       </div>
 
-      <!-- Card -->
-      <div class="about-card card reveal reveal-delay-2">
-        <div class="card-body">
-          <div class="card-title-row">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="icon-secondary">
-              <path d="M4.8 2.3A.3.3 0 1 0 5 2H4a2 2 0 0 0-2 2v5a6 6 0 0 0 6 6v0a6 6 0 0 0 6-6V4a2 2 0 0 0-2-2h-1a.2.2 0 1 0 .3.3"/>
-              <path d="M8 15v1a6 6 0 0 0 6 6v0a6 6 0 0 0 6-6v-4"/>
-              <circle cx="20" cy="10" r="2"/>
-            </svg>
-            <h3>Experience &amp; Background</h3>
-          </div>
+      <!-- Right: Card -->
+      <div class="reveal reveal-delay-1">
+        <div class="card border-none shadow-lg bg-background/50 backdrop-blur-sm transition-all hover:shadow-xl hover:-translate-y-1">
+          <div class="p-6 space-y-5">
+            <!-- Title -->
+            <div class="flex items-center gap-3">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="w-5 h-5 text-secondary shrink-0">
+                <path d="M4.8 2.3A.3.3 0 1 0 5 2H4a2 2 0 0 0-2 2v5a6 6 0 0 0 6 6v0a6 6 0 0 0 6-6V4a2 2 0 0 0-2-2h-1a.2.2 0 1 0 .3.3"/>
+                <path d="M8 15v1a6 6 0 0 0 6 6v0a6 6 0 0 0 6-6v-4"/>
+                <circle cx="20" cy="10" r="2"/>
+              </svg>
+              <h3 class="text-base font-semibold">Experience &amp; Background</h3>
+            </div>
 
-          <div class="info-block">
-            <h4>Education</h4>
-            <p>Bachelor of Dental Surgery (BDS) - Delta University</p>
-          </div>
+            <!-- Education -->
+            <div>
+              <h4 class="text-sm font-semibold text-foreground mb-1">Education</h4>
+              <p class="text-sm text-muted-foreground">Bachelor of Dental Surgery (BDS) - Delta University</p>
+            </div>
 
-          <hr class="divider-line" />
+            <hr class="border-border" />
 
-          <div class="info-block">
-            <h4>Operating Experience</h4>
-            <ul class="clinic-list">
-              @for (clinic of clinics; track clinic) {
-                <li>
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="check-icon">
-                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/>
-                  </svg>
-                  {{ clinic }}
-                </li>
-              }
-            </ul>
+            <!-- Clinics -->
+            <div>
+              <h4 class="text-sm font-semibold text-foreground mb-2">Operating Experience</h4>
+              <ul class="space-y-2 text-sm text-muted-foreground">
+                @for (clinic of clinics; track clinic) {
+                  <li class="flex items-center gap-2">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="w-3.5 h-3.5 text-accent shrink-0">
+                      <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                      <polyline points="22 4 12 14.01 9 11.01"/>
+                    </svg>
+                    {{ clinic }}
+                  </li>
+                }
+              </ul>
+            </div>
           </div>
         </div>
       </div>

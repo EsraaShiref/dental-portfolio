@@ -1,40 +1,41 @@
-<section id="contact" class="contact reveal">
-  <div class="container">
-    <div class="contact-grid">
+<section id="contact" class="py-24 relative overflow-hidden reveal">
+  <div class="absolute inset-0 bg-primary/5 -z-10"></div>
 
+  <div class="max-w-5xl mx-auto px-4 md:px-6">
+    <div class="grid lg:grid-cols-2 gap-16 items-start">
       <!-- Left: Info -->
-      <div class="contact-info">
-        <h2>Get in Touch</h2>
-        <p class="contact-desc">
-          Whether you're a patient looking for care or a clinic seeking a dedicated professional, I'd love to hear from you.
-        </p>
+      <div class="space-y-8">
+        <div>
+          <h2 class="text-3xl md:text-4xl font-bold mb-4">Get in Touch</h2>
+          <p class="text-muted-foreground text-lg">
+            Whether you're a patient looking for care or a clinic seeking a dedicated professional, I'd love to hear from you.
+          </p>
+        </div>
 
-        <div class="info-list">
+        <div class="space-y-6">
           @for (info of contactInfos; track info.label) {
-            <div class="info-item">
-              <div class="info-icon">
+            <div class="flex items-start gap-4">
+              <div class="w-12 h-12 rounded-full bg-secondary/10 flex items-center justify-center shrink-0">
                 @if (info.icon === 'phone') {
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="w-5 h-5 text-secondary">
                     <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.56 3.35 2 2 0 0 1 3.53 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.5a16 16 0 0 0 6 6l.92-.92a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>
                   </svg>
-                }
-                @if (info.icon === 'mail') {
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                } @else if (info.icon === 'mail') {
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="w-5 h-5 text-secondary">
                     <rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
                   </svg>
-                }
-                @if (info.icon === 'map') {
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                } @else {
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="w-5 h-5 text-secondary">
                     <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/>
                   </svg>
                 }
               </div>
               <div>
-                <h4>{{ info.label }}</h4>
+                <h4 class="font-semibold mb-1">{{ info.label }}</h4>
                 @if (info.href) {
-                  <a [href]="info.href">{{ info.value }}</a>
+                  <a [href]="info.href" class="text-muted-foreground hover:text-primary transition-colors text-sm">{{ info.value }}</a>
                 } @else {
-                  <p>{{ info.value }}</p>
+                  <p class="text-muted-foreground text-sm">{{ info.value }}</p>
                 }
               </div>
             </div>
@@ -42,112 +43,118 @@
         </div>
 
         <!-- WhatsApp CTA -->
-        <a [href]="waLink" target="_blank" rel="noopener noreferrer" class="wa-cta">
-          <div class="wa-icon">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="#25D366">
+        <a [href]="waLink" target="_blank" rel="noopener noreferrer" class="flex items-center gap-4 p-5 rounded-xl bg-muted border border-border hover:bg-muted/80 transition-colors group">
+          <div class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform shadow-sm">
+            <svg viewBox="0 0 24 24" fill="#25D366" class="w-6 h-6">
               <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347"/>
             </svg>
           </div>
           <div>
-            <p class="wa-title">Chat on WhatsApp</p>
-            <p class="wa-sub">Fastest way to book an appointment</p>
+            <p class="font-semibold text-foreground">Chat on WhatsApp</p>
+            <p class="text-sm text-muted-foreground">Fastest way to book an appointment</p>
           </div>
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#25D366" stroke-width="2" class="wa-arrow">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#25D366" stroke-width="2" class="ml-auto w-5 h-5 shrink-0">
             <path d="m9 18 6-6-6-6"/>
           </svg>
         </a>
 
-        <!-- Map placeholder -->
-        <div class="map-placeholder">
-          <div class="map-bg"></div>
-          <div class="map-content">
-            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <!-- Map -->
+        <div class="w-full h-48 bg-muted rounded-xl border border-border flex items-center justify-center relative overflow-hidden group">
+          <div class="absolute inset-0 bg-cover bg-center opacity-20 group-hover:opacity-30 transition-opacity grayscale" style="background-image: url('https://images.unsplash.com/photo-1524661135-423995f22d0b?auto=format&fit=crop&q=80&w=800');"></div>
+          <div class="relative z-10 flex flex-col items-center text-muted-foreground">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="w-8 h-8 mb-2 text-primary">
               <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/>
             </svg>
-            <span>Tanta, Egypt</span>
+            <span class="font-medium text-primary">Tanta, Egypt</span>
           </div>
         </div>
       </div>
 
       <!-- Right: Form -->
-      <div class="form-card card">
-        <div class="form-card-body">
-          <h3>Request an Appointment</h3>
-          <p class="form-sub">
+      <div class="shadow-xl border border-border/50 rounded-xl bg-card">
+        <div class="p-6 md:p-8">
+          <h3 class="text-xl font-semibold mb-1">Request an Appointment</h3>
+          <p class="text-sm text-muted-foreground mb-6">
             Fill out the form below or
-            <a [href]="waLink" target="_blank" rel="noopener noreferrer" class="wa-inline">
+            <a [href]="waLink" target="_blank" rel="noopener noreferrer" class="font-medium hover:underline inline-flex items-center gap-1 text-foreground">
+              <svg viewBox="0 0 24 24" fill="#25D366" class="w-3.5 h-3.5">
+                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347"/>
+              </svg>
               message on WhatsApp
             </a>
             for a faster response.
           </p>
 
           @if (submitted()) {
-            <div class="success-state">
-              <div class="success-icon">
-                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#16a34a" stroke-width="2">
+            <div class="flex flex-col items-center justify-center py-12 gap-4 text-center">
+              <div class="w-16 h-16 rounded-full bg-green-100 flex items-center justify-center">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#16a34a" stroke-width="2" class="w-8 h-8">
                   <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/>
                 </svg>
               </div>
-              <h4>Request Received!</h4>
-              <p>Dr. Ahmed's team will contact you shortly to confirm your appointment.</p>
-              <a [href]="waLink" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-rounded">
+              <h3 class="text-xl font-semibold">Request Received!</h3>
+              <p class="text-muted-foreground text-sm max-w-xs">Dr. Ahmed's team will contact you shortly to confirm your appointment.</p>
+              <a [href]="waLink" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 border border-border bg-muted hover:bg-muted/80 text-foreground rounded-full px-5 py-2 text-sm font-medium transition-colors mt-2">
+                <svg viewBox="0 0 24 24" fill="#25D366" class="w-4 h-4">
+                  <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347"/>
+                </svg>
                 Follow up on WhatsApp
               </a>
             </div>
           } @else {
-            <form [formGroup]="form" (ngSubmit)="onSubmit()" class="appt-form">
-              <div class="form-row">
-                <div class="form-group">
-                  <label>First Name</label>
-                  <input formControlName="firstName" placeholder="Ahmed" />
+            <form [formGroup]="form" (ngSubmit)="onSubmit()" class="space-y-4">
+              <div class="grid grid-cols-2 gap-4">
+                <div class="flex flex-col gap-1.5">
+                  <label class="text-sm font-medium text-foreground">First Name</label>
+                  <input formControlName="firstName" placeholder="Ahmed" class="w-full px-3 py-2 border border-border rounded-md bg-transparent text-foreground text-sm placeholder:text-muted-foreground focus:border-secondary focus:ring-3 focus:ring-secondary/15 outline-none transition-all" />
                   @if (isInvalid('firstName')) {
-                    <span class="error-msg">First name must be at least 2 characters</span>
+                    <span class="text-xs text-destructive">First name must be at least 2 characters</span>
                   }
                 </div>
-                <div class="form-group">
-                  <label>Last Name</label>
-                  <input formControlName="lastName" placeholder="Salama" />
+                <div class="flex flex-col gap-1.5">
+                  <label class="text-sm font-medium text-foreground">Last Name</label>
+                  <input formControlName="lastName" placeholder="Salama" class="w-full px-3 py-2 border border-border rounded-md bg-transparent text-foreground text-sm placeholder:text-muted-foreground focus:border-secondary focus:ring-3 focus:ring-secondary/15 outline-none transition-all" />
                   @if (isInvalid('lastName')) {
-                    <span class="error-msg">Last name must be at least 2 characters</span>
+                    <span class="text-xs text-destructive">Last name must be at least 2 characters</span>
                   }
                 </div>
               </div>
 
-              <div class="form-group">
-                <label>Email Address</label>
-                <input type="email" formControlName="email" placeholder="you@example.com" />
+              <div class="flex flex-col gap-1.5">
+                <label class="text-sm font-medium text-foreground">Email Address</label>
+                <input type="email" formControlName="email" placeholder="you@example.com" class="w-full px-3 py-2 border border-border rounded-md bg-transparent text-foreground text-sm placeholder:text-muted-foreground focus:border-secondary focus:ring-3 focus:ring-secondary/15 outline-none transition-all" />
                 @if (isInvalid('email')) {
-                  <span class="error-msg">Please enter a valid email address</span>
+                  <span class="text-xs text-destructive">Please enter a valid email address</span>
                 }
               </div>
 
-              <div class="form-group">
-                <label>Phone Number</label>
-                <input type="tel" formControlName="phone" placeholder="+20 100 000 0000" />
+              <div class="flex flex-col gap-1.5">
+                <label class="text-sm font-medium text-foreground">Phone Number</label>
+                <input type="tel" formControlName="phone" placeholder="+20 100 000 0000" class="w-full px-3 py-2 border border-border rounded-md bg-transparent text-foreground text-sm placeholder:text-muted-foreground focus:border-secondary focus:ring-3 focus:ring-secondary/15 outline-none transition-all" />
                 @if (isInvalid('phone')) {
-                  <span class="error-msg">Phone number must be at least 8 digits</span>
+                  <span class="text-xs text-destructive">Phone number must be at least 8 digits</span>
                 }
               </div>
 
-              <div class="form-group">
-                <label>Preferred Date</label>
-                <input type="date" formControlName="date" [min]="today" />
+              <div class="flex flex-col gap-1.5">
+                <label class="text-sm font-medium text-foreground">Preferred Date</label>
+                <input type="date" formControlName="date" [min]="today" class="w-full px-3 py-2 border border-border rounded-md bg-transparent text-foreground text-sm focus:border-secondary focus:ring-3 focus:ring-secondary/15 outline-none transition-all" />
                 @if (isInvalid('date')) {
-                  <span class="error-msg">Please select a preferred date</span>
+                  <span class="text-xs text-destructive">Please select a preferred date</span>
                 }
               </div>
 
-              <div class="form-group">
-                <label>Message (optional)</label>
-                <textarea formControlName="message" placeholder="Describe your concern or request..."></textarea>
+              <div class="flex flex-col gap-1.5">
+                <label class="text-sm font-medium text-foreground">Message (optional)</label>
+                <textarea formControlName="message" placeholder="Describe your concern or request..." class="w-full px-3 py-2 border border-border rounded-md bg-transparent text-foreground text-sm placeholder:text-muted-foreground focus:border-secondary focus:ring-3 focus:ring-secondary/15 outline-none transition-all min-h-[90px] resize-none"></textarea>
               </div>
 
-              <button type="submit" class="btn btn-primary w-full">
+              <button type="submit" class="w-full mt-2 rounded-md px-4 py-2.5 bg-primary text-primary-foreground text-sm font-medium hover:opacity-90 transition-all disabled:opacity-50">
                 Send Appointment Request
               </button>
 
-              <a [href]="waLink" target="_blank" rel="noopener noreferrer" class="btn btn-outline w-full wa-form-btn">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="#25D366">
+              <a [href]="waLink" target="_blank" rel="noopener noreferrer" class="flex items-center justify-center gap-2 w-full border border-border bg-muted hover:bg-muted/80 text-foreground rounded-md px-4 py-2.5 text-sm font-medium transition-colors">
+                <svg viewBox="0 0 24 24" fill="#25D366" class="w-4 h-4">
                   <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347"/>
                 </svg>
                 Or Book via WhatsApp
@@ -156,7 +163,6 @@
           }
         </div>
       </div>
-
     </div>
   </div>
 </section>

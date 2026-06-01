@@ -12,40 +12,23 @@ import { WA_LINK } from '../../../services/portfolio-data.service';
   [href]="waLink"
   target="_blank"
   rel="noopener noreferrer"
-  class="fab"
+  class="fixed bottom-6 right-6 z-50 w-14 h-14 rounded-full flex items-center justify-center shadow-2xl opacity-0 scale-0"
+  style="background-color: #25D366;"
   title="Chat on WhatsApp"
 >
-  <svg width="30" height="30" viewBox="0 0 24 24" fill="white">
-    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347"/>
+  <svg width="28" height="28" viewBox="0 0 24 24" fill="white">
+    <path d="M19.077 4.928C17.191 3.041 14.683 2 12.006 2c-5.35 0-9.71 4.352-9.71 9.695 0 1.706.447 3.374 1.296 4.83L2 22l5.563-1.557c1.414.769 3.005 1.176 4.642 1.176h.004c5.348 0 9.719-4.353 9.719-9.697 0-2.592-1.01-5.028-2.853-6.882zM12.02 20.22h-.003c-1.445 0-2.867-.389-4.092-1.117l-.294-.175-3.303.866.882-3.22-.192-.305A8.016 8.016 0 0 1 4.07 11.78c0-4.424 3.598-8.024 8.03-8.024 2.145 0 4.164.838 5.681 2.356a7.973 7.973 0 0 1 2.355 5.66c0 4.423-3.598 8.024-8.022 8.024zm4.404-6.076c-.242-.12-1.425-.703-1.645-.782-.22-.08-.38-.12-.54.12-.16.24-.626.782-.768.942-.142.16-.285.18-.525.06-.24-.12-1.016-.374-1.935-1.156-.715-.608-1.198-1.357-1.339-1.586-.14-.23-.015-.354.11-.47.106-.103.24-.27.36-.406.12-.135.16-.23.24-.385.08-.154.04-.286-.02-.404-.06-.117-.54-1.245-.74-1.705-.196-.447-.396-.386-.54-.394-.14-.006-.3-.008-.46-.008-.16 0-.42.06-.64.288-.22.23-.86.848-.86 2.067 0 1.22.87 2.398.99 2.563.12.166 1.733 2.645 4.2 3.507.586.22 1.044.354 1.4.45.588.18 1.124.155 1.545.094.47-.067 1.456-.594 1.66-1.167.206-.574.206-1.067.144-1.171-.06-.104-.22-.164-.46-.284z"/>
   </svg>
 </a>
   `,
   styles: [`
-.fab {
-  position: fixed;
-  bottom: 1.5rem;
-  right: 1.5rem;
-  z-index: 50;
-  width: 3.5rem;
-  height: 3.5rem;
-  border-radius: 9999px;
-  background: #25D366;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 8px 24px rgba(37, 211, 102, 0.4);
-  opacity: 0;
-  transform: scale(0);
-  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), background 0.2s, box-shadow 0.2s;
-
-  &:hover {
-    transform: scale(1.1) !important;
-    background: #20ba5a;
-    box-shadow: 0 12px 32px rgba(37, 211, 102, 0.5);
-  }
-
-  &:active { transform: scale(0.95) !important; }
-}
+    :host { display: block; }
+    a {
+      transition: transform 0.7s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.5s ease, background-color 0.2s, box-shadow 0.2s;
+      transition-delay: 1.5s;
+    }
+    a:hover { transform: scale(1.1); background-color: #20ba5a !important; }
+    a:active { transform: scale(0.93); }
   `]
 })
 export class FloatingWhatsappComponent implements AfterViewInit {
@@ -56,10 +39,9 @@ export class FloatingWhatsappComponent implements AfterViewInit {
   ngAfterViewInit() {
     const el = this.btnRef?.nativeElement;
     if (!el) return;
-    setTimeout(() => {
-      el.style.transition = 'transform 0.7s cubic-bezier(0.34, 1.56, 0.64, 1), background 0.2s, box-shadow 0.2s, opacity 0.5s ease';
+    requestAnimationFrame(() => {
       el.style.opacity = '1';
       el.style.transform = 'scale(1)';
-    }, 1500);
+    });
   }
 }

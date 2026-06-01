@@ -15,8 +15,4 @@ export class AboutComponent {
     'Sehetak Center',
     'Zedan Dental Center',
   ];
-
-  scrollTo(id: string) {
-    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
-  }
 }
