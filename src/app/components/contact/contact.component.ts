@@ -46,8 +46,21 @@ export class ContactComponent {
       this.form.markAllAsTouched();
       return;
     }
+
+    const { firstName, lastName, email, phone, date, message } = this.form.value;
+    const name = [firstName, lastName].filter(Boolean).join(' ');
+    const msg =
+      `مرحباً دكتور أحمد، حجز موعد جديد من الموقع:\n` +
+      `- الاسم: ${name}\n` +
+      `- الهاتف: ${phone || '—'}\n` +
+      `- الإيميل: ${email || '—'}\n` +
+      `- التاريخ: ${date || '—'}\n` +
+      `- الرسالة: ${message || '—'}`;
+    const whatsappUrl = `https://wa.me/201028654881?text=${encodeURIComponent(msg)}`;
+
     this.submitted.set(true);
     this.form.reset();
+    window.open(whatsappUrl, '_blank');
     setTimeout(() => this.submitted.set(false), 5000);
   }
 
