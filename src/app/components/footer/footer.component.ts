@@ -13,7 +13,7 @@ import { WA_LINK } from '../../services/portfolio-data.service';
       <!-- Brand -->
       <div class="text-center md:text-left">
         <div class="flex items-center justify-center md:justify-start gap-2 mb-4">
-          <div class="w-8 h-8 rounded-full bg-secondary flex items-center justify-center text-white font-serif font-bold text-sm">AS</div>
+          <img src="assets/ahmed-profile.png" alt="Dr. Ahmed Wagdy Salama" class="w-8 h-8 rounded-full object-cover border border-white/20 shadow-sm" />
           <span class="font-serif font-semibold text-lg">Dr. Ahmed Wagdy Salama</span>
         </div>
         <p class="text-primary-foreground/70 text-sm max-w-xs mx-auto md:mx-0">

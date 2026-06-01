@@ -102,10 +102,72 @@ h1, h2, h3, h4, h5, h6 {
   }
 }
 
+/* ── Reveal duration variants matching React source timings ── */
+.reveal-fast {
+  transition-duration: 0.35s;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+.reveal-medium {
+  transition-duration: 0.45s;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+.reveal-slow {
+  transition-duration: 0.7s;
+  transition-timing-function: cubic-bezier(0, 0, 0.2, 1);
+}
+.reveal-xslow {
+  transition-duration: 0.8s;
+}
+
+/* ── Reveal transform variants ── */
+.reveal-left {
+  transform: translateX(-30px);
+  &.revealed { transform: translateX(0); }
+}
+.reveal-right {
+  transform: translateX(30px);
+  &.revealed { transform: translateX(0); }
+}
+.reveal-scale {
+  transform: scale(0.92);
+  &.revealed { transform: scale(1); }
+}
+.reveal-y-16 {
+  transform: translateY(16px);
+  &.revealed { transform: translateY(0); }
+}
+
+/* ── Stagger delay classes ── */
 .reveal-delay-1 { transition-delay: 0.1s; }
 .reveal-delay-2 { transition-delay: 0.2s; }
 .reveal-delay-3 { transition-delay: 0.3s; }
 .reveal-delay-4 { transition-delay: 0.4s; }
+
+/* ── Reveal badge (scale 0.7 y:10 → 1 y:0, backOut) ── */
+.reveal-badge {
+  opacity: 0;
+  transform: scale(0.7) translateY(10px);
+  transition: opacity 0.5s cubic-bezier(0.34, 1.56, 0.64, 1), transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+  &.revealed { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+/* ── Opacity-only reveal (no transform) ── */
+.reveal-none {
+  transform: none;
+}
+
+/* ── Spring hover effect shared class ── */
+.spring-hover {
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+.spring-hover:hover {
+  transform: scale(1.18) rotate(-6deg);
+}
+
+/* ── Icon spring hover (SKills) ── */
+.spring-hover-sm:hover {
+  transform: scale(1.15) rotate(-5deg);
+}
 
 /* ─── Form Focus ─────────────────────────────────────────────────────────────── */
 input:focus-visible,

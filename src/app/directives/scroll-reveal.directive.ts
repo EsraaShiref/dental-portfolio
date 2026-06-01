@@ -5,6 +5,7 @@ import { Directive, ElementRef, AfterViewInit, OnDestroy, input } from '@angular
   standalone: true,
 })
 export class ScrollRevealDirective implements AfterViewInit, OnDestroy {
+  readonly revealClass = input('reveal');
   readonly delay = input(0);
 
   private observer?: IntersectionObserver;
@@ -13,15 +14,16 @@ export class ScrollRevealDirective implements AfterViewInit, OnDestroy {
 
   ngAfterViewInit() {
     const el = this.el.nativeElement;
-    el.style.opacity = '0';
-    el.style.transform = 'translateY(20px)';
-    el.style.transition = `opacity 0.6s ease ${this.delay()}s, transform 0.6s ease ${this.delay()}s`;
+    const cls = this.revealClass();
+    el.classList.add(cls);
+    if (this.delay()) {
+      el.style.transitionDelay = `${this.delay()}s`;
+    }
 
     this.observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          el.style.opacity = '1';
-          el.style.transform = 'translateY(0)';
+          el.classList.add('revealed');
           this.observer?.unobserve(el);
         }
       },

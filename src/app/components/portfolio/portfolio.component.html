@@ -32,6 +32,7 @@
       </div>
       <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
         @for (pair of getPairs(data.restorativeImages, 'restorative'); track pair.index) {
+          <div class="reveal reveal-fast" [style.transition-delay]="((pair.index / 2) % 6) * 0.05 + 's'">
           @if (pair.after) {
             <app-before-after-slider
               [before]="pair.before"
@@ -56,6 +57,7 @@
               </div>
             </div>
           }
+          </div>
         }
       </div>
       @if (hasMore(data.restorativeImages, 'restorative')) {
@@ -82,6 +84,7 @@
       </div>
       <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
         @for (pair of getPairs(data.prosthodonticsImages, 'prosthodontics'); track pair.index) {
+          <div class="reveal reveal-fast" [style.transition-delay]="((pair.index / 2) % 6) * 0.05 + 's'">
           @if (pair.after) {
             <app-before-after-slider [before]="pair.before" [after]="pair.after" [caseNumber]="pair.index / 2 + 1" (beforeClick)="openLightbox(data.prosthodonticsImages, pair.index)" (afterClick)="openLightbox(data.prosthodonticsImages, pair.index + 1)" />
           } @else {
@@ -100,6 +103,7 @@
               </div>
             </div>
           }
+          </div>
         }
       </div>
     }
@@ -112,7 +116,7 @@
       </div>
       <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
         @for (img of data.endodonticImages; track img.src; let i = $index) {
-          <div class="cursor-pointer overflow-hidden rounded-lg hover:opacity-90 transition-opacity" (click)="openLightbox(data.endodonticImages, i)">
+          <div class="cursor-pointer overflow-hidden rounded-lg hover:opacity-90 transition-opacity reveal reveal-fast" [style.transition-delay]="i * 0.055 + 's'" (click)="openLightbox(data.endodonticImages, i)">
             <img [src]="img.src" [alt]="img.label" class="w-full h-48 object-cover" loading="lazy" />
             <p class="text-xs mt-2 text-center text-primary-foreground/70">{{ img.label }}</p>
           </div>
@@ -128,6 +132,7 @@
       </div>
       <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
         @for (pair of getPairs(data.surgeryImages, 'surgery'); track pair.index) {
+          <div class="reveal reveal-fast" [style.transition-delay]="((pair.index / 2) % 6) * 0.05 + 's'">
           @if (pair.after) {
             <app-before-after-slider [before]="pair.before" [after]="pair.after" [caseNumber]="pair.index / 2 + 1" (beforeClick)="openLightbox(data.surgeryImages, pair.index)" (afterClick)="openLightbox(data.surgeryImages, pair.index + 1)" />
           } @else {
@@ -146,6 +151,7 @@
               </div>
             </div>
           }
+          </div>
         }
       </div>
       @if (hasMore(data.surgeryImages, 'surgery')) {
@@ -166,7 +172,7 @@
       </div>
       <div class="grid md:grid-cols-3 gap-6">
         @for (img of data.bleachingImages; track img.src; let i = $index) {
-          <div class="flex flex-col gap-3">
+          <div class="flex flex-col gap-3 reveal reveal-fast" [style.transition-delay]="i * 0.1 + 's'">
             <div class="group relative rounded-2xl overflow-hidden cursor-zoom-in shadow-lg border border-primary-foreground/10" (click)="openLightbox(data.bleachingImages, i)">
               <img [src]="img.src" [alt]="img.label" class="w-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" />
               <div class="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-300 flex items-center justify-center">

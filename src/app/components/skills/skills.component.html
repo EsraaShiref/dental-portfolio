@@ -9,7 +9,7 @@
     <div class="grid lg:grid-cols-3 gap-8">
       @for (group of skillGroups; track group.title; let i = $index) {
         <div
-          class="h-full border-t-4 shadow-md transition-all duration-300 ease-out hover:shadow-xl hover:-translate-y-1.5 rounded-xl bg-card border-border/50"
+          class="h-full border-t-4 shadow-md transition-all hover:shadow-xl hover:-translate-y-1.5 rounded-xl bg-card border-border/50 reveal reveal-medium reveal-y-24"
           [class.border-t-secondary]="group.borderColor === 'border-t-secondary'"
           [class.border-t-primary]="group.borderColor === 'border-t-primary'"
           [class.border-t-accent]="group.borderColor === 'border-t-accent'"
@@ -18,9 +18,8 @@
           <div class="p-6">
             <!-- Icon -->
             <div
-              class="w-12 h-12 rounded-lg flex items-center justify-center mb-4 transition-all duration-300 ease-out"
+              class="w-12 h-12 rounded-lg flex items-center justify-center mb-4 spring-hover-sm"
               [class]="group.iconBg"
-              [style.transition-timing-function]="'cubic-bezier(0.34, 1.56, 0.64, 1)'"
             >
               @if (i === 0) {
                 <!-- Syringe icon for Clinical Skills -->

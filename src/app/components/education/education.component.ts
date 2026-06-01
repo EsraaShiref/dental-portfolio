@@ -22,14 +22,13 @@ import { PortfolioDataService } from '../../services/portfolio-data.service';
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 md:gap-6">
       @for (cert of data.certificates; track cert.title; let i = $index) {
         <div
-          class="h-full hover:shadow-md transition-all group border border-border/50 hover:border-secondary/30 cursor-default rounded-xl bg-card hover:-translate-y-[3px] hover:scale-[1.02] duration-200"
-          [style.animation-delay]="(i * 0.055) + 's'"
+          class="h-full transition-all group border border-border/50 hover:border-secondary/30 cursor-default rounded-xl bg-card hover:-translate-y-[3px] hover:scale-[1.02] reveal reveal-fast reveal-y-16"
+          [style.transition-delay]="(i * 0.055) + 's'"
         >
           <div class="p-6 flex items-start gap-4">
             <!-- Icon -->
             <div
-              class="p-3 rounded-lg bg-muted group-hover:bg-secondary/10 transition-all shrink-0 hover:scale-118 hover:-rotate-6 duration-200"
-              style="transition-timing-function: cubic-bezier(0.34, 1.56, 0.64, 1);"
+              class="p-3 rounded-lg bg-muted group-hover:bg-secondary/10 transition-all shrink-0 spring-hover"
             >
               @switch (cert.icon) {
                 @case ('microscope') {
