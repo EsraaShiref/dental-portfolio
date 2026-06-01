@@ -19,7 +19,7 @@ A high-performance, single-page portfolio website for a general dentist built wi
 ### Interactive Elements
 - **Floating WhatsApp button** — Spring-entrance animation (cubic-bezier 0.34, 1.56, 0.64, 1) with 1.5s delay, persistent quick-contact, official WhatsApp SVG icon
 - **Sticky navbar** — Smooth-scroll navigation with active section tracking
-- **Before/after slider** — Drag-to-reveal comparison with lightbox image viewer (scrollable for oversized images)
+- **Before/after slider** — Drag-to-reveal comparison with lightbox image viewer (viewport-constrained via max-h-[80vh])
 - **Scroll-reveal animations** — IntersectionObserver-driven entrance animations across all sections with configurable stagger delays
 
 ## Built With
