@@ -221,6 +221,11 @@ button {
   }
 }
 
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
 @keyframes float {
   0%, 100% { transform: translateY(0); }
   50% { transform: translateY(-10px); }
@@ -235,12 +240,41 @@ button {
   to { transform: rotate(360deg); }
 }
 
+@keyframes scaleIn {
+  from { opacity: 0; transform: scale(0.92); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.6s ease, transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+
+  &.revealed {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.2s; }
+.reveal-delay-3 { transition-delay: 0.3s; }
+.reveal-delay-4 { transition-delay: 0.4s; }
+
 .animate-fade-up {
   animation: fadeInUp 0.6s ease forwards;
 }
 
+.animate-fade-in {
+  animation: fadeIn 0.6s ease forwards;
+}
+
 .animate-float {
   animation: float 5s ease-in-out infinite;
+}
+
+.animate-scale-in {
+  animation: scaleIn 0.7s ease forwards;
 }
 
 /* ─── Form Styles ────────────────────────────────────────────────────────────── */

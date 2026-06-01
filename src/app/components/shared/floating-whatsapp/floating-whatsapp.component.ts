@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, AfterViewInit, ElementRef, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { WA_LINK } from '../../../services/portfolio-data.service';
 
@@ -8,6 +8,7 @@ import { WA_LINK } from '../../../services/portfolio-data.service';
   imports: [CommonModule],
   template: `
 <a
+  #btn
   [href]="waLink"
   target="_blank"
   rel="noopener noreferrer"
@@ -33,19 +34,32 @@ import { WA_LINK } from '../../../services/portfolio-data.service';
   align-items: center;
   justify-content: center;
   box-shadow: 0 8px 24px rgba(37, 211, 102, 0.4);
-  transition: all 0.2s;
-  animation: fadeInUp 0.5s ease 1.5s both;
+  opacity: 0;
+  transform: scale(0);
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), background 0.2s, box-shadow 0.2s;
 
   &:hover {
-    transform: scale(1.1);
+    transform: scale(1.1) !important;
     background: #20ba5a;
     box-shadow: 0 12px 32px rgba(37, 211, 102, 0.5);
   }
 
-  &:active { transform: scale(0.95); }
+  &:active { transform: scale(0.95) !important; }
 }
   `]
 })
-export class FloatingWhatsappComponent {
+export class FloatingWhatsappComponent implements AfterViewInit {
   waLink = WA_LINK;
+
+  @ViewChild('btn') btnRef?: ElementRef<HTMLAnchorElement>;
+
+  ngAfterViewInit() {
+    const el = this.btnRef?.nativeElement;
+    if (!el) return;
+    setTimeout(() => {
+      el.style.transition = 'transform 0.7s cubic-bezier(0.34, 1.56, 0.64, 1), background 0.2s, box-shadow 0.2s, opacity 0.5s ease';
+      el.style.opacity = '1';
+      el.style.transform = 'scale(1)';
+    }, 1500);
+  }
 }

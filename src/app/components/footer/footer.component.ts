@@ -7,7 +7,7 @@ import { WA_LINK } from '../../services/portfolio-data.service';
   standalone: true,
   imports: [CommonModule],
   template: `
-<footer class="footer">
+<footer class="footer reveal">
   <div class="container footer-inner">
 
     <!-- Brand -->

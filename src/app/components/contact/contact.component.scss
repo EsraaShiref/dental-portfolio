@@ -115,6 +115,49 @@
 
 .wa-arrow { margin-left: auto; }
 
+/* ─── Map Placeholder ─── */
+.map-placeholder {
+  width: 100%;
+  height: 12rem;
+  border-radius: 0.75rem;
+  border: 1px solid var(--border);
+  background: var(--muted);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.map-bg {
+  position: absolute;
+  inset: 0;
+  background: url('https://images.unsplash.com/photo-1524661135-423995f22d0b?auto=format&fit=crop&q=80&w=800') center/cover;
+  opacity: 0.15;
+  filter: grayscale(1);
+  transition: opacity 0.3s;
+
+  .map-placeholder:hover & { opacity: 0.25; }
+}
+
+.map-content {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--muted-foreground);
+
+  svg { color: var(--primary); width: 2rem; height: 2rem; }
+
+  span {
+    font-weight: 500;
+    color: var(--primary);
+    font-size: 0.9rem;
+  }
+}
+
 /* ─── Form Card ─── */
 .form-card {
   box-shadow: 0 8px 32px rgba(0,0,0,0.08);

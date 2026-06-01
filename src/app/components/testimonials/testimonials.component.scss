@@ -4,36 +4,49 @@
   overflow: hidden;
 }
 
-.testimonial-wrap {
-  max-width: 42rem;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 1.5rem;
+.carousel-wrap {
+  cursor: grab;
+  user-select: none;
+  overflow: hidden;
+
+  &:active { cursor: grabbing; }
 }
 
-.testimonial-card {
-  width: 100%;
-  padding: 2rem;
+.carousel-track {
+  display: flex;
+  gap: 1.5rem;
+  padding: 1rem 0;
+  will-change: transform;
+}
+
+.carousel-card {
+  flex-shrink: 0;
+  width: min(85vw, 320px);
+
+  @media (min-width: 640px) { width: 340px; }
+  @media (min-width: 1024px) { width: 380px; }
+
+  padding: 1.5rem;
   display: flex;
   flex-direction: column;
-  gap: 1.25rem;
-  transition: box-shadow 0.3s;
+  gap: 1rem;
+  border-radius: 1rem;
+  transition: box-shadow 0.2s;
 
-  &:hover { box-shadow: 0 16px 40px rgba(0,0,0,0.1); }
+  &:hover { box-shadow: 0 12px 32px rgba(0,0,0,0.08); }
 }
 
 .stars {
   display: flex;
   gap: 0.125rem;
+  flex-shrink: 0;
 }
 
 .review {
-  font-size: 1rem;
+  font-size: 0.875rem;
   color: var(--muted-foreground);
-  line-height: 1.8;
-  font-style: italic;
+  line-height: 1.7;
+  flex: 1;
 }
 
 .author {
@@ -58,32 +71,12 @@
 }
 
 .author-name {
-  font-size: 0.9rem;
+  font-size: 0.875rem;
   font-weight: 600;
   color: var(--foreground);
 }
 
 .author-title {
-  font-size: 0.78rem;
+  font-size: 0.75rem;
   color: var(--muted-foreground);
-}
-
-.dots {
-  display: flex;
-  gap: 0.5rem;
-}
-
-.dot {
-  width: 0.5rem;
-  height: 0.5rem;
-  border-radius: 9999px;
-  background: var(--border);
-  transition: all 0.3s;
-  border: none;
-  cursor: pointer;
-
-  &.active {
-    background: var(--secondary);
-    width: 1.5rem;
-  }
 }

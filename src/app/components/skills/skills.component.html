@@ -1,4 +1,4 @@
-<section id="skills" class="skills">
+<section id="skills" class="skills reveal">
   <div class="container">
     <div class="section-header">
       <h2>Core Competencies</h2>
@@ -6,8 +6,8 @@
     </div>
 
     <div class="skills-grid">
-      @for (group of skillGroups; track group.title) {
-        <div class="skill-card card" [class]="group.colorClass">
+      @for (group of skillGroups; track group.title; let i = $index) {
+        <div class="skill-card card reveal" [class]="group.colorClass" [style.transition-delay]="(0.1 + i * 0.1) + 's'">
           <div class="skill-card-body">
             <div class="skill-icon" [class]="group.iconBg">
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
