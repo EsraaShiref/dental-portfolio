@@ -1,97 +1,217 @@
-# Dental Portfolio — Dr. Ahmed Wagdy Salama
+# Premium Dental Portfolio Website
 
-A high-performance, single-page portfolio website for a general dentist built with **Angular 18** (standalone component architecture) and **Tailwind CSS v3**. The site presents clinical casework, credentials, skills, and patient testimonials through an interactive, mobile-responsive interface.
+<p align="center">
+  <img src="https://img.shields.io/badge/Angular-18.2-%23DD0031?logo=angular&logoColor=white" alt="Angular 18.2"/>
+  <img src="https://img.shields.io/badge/Tailwind_CSS-3.4-%2306B6D4?logo=tailwindcss&logoColor=white" alt="Tailwind CSS 3.4"/>
+  <img src="https://img.shields.io/badge/TypeScript-5.5-%233178C6?logo=typescript&logoColor=white" alt="TypeScript 5.5"/>
+  <img src="https://img.shields.io/badge/Standalone-Architecture-%2300D084?logo=angular&logoColor=white" alt="Standalone Architecture"/>
+  <img src="https://img.shields.io/badge/PostCSS-8-%23DD3A0A?logo=postcss&logoColor=white" alt="PostCSS 8"/>
+  <img src="https://img.shields.io/badge/license-MIT-%23A31F34" alt="MIT License"/>
+  <br/>
+  <img src="https://img.shields.io/badge/build-passing-%2328A745" alt="Build Passing"/>
+  <img src="https://img.shields.io/badge/responsive-mobile--first-%23009688" alt="Responsive"/>
+  <img src="https://img.shields.io/badge/animated-scroll--reveal-%23FF6B6B" alt="Scroll Reveal Animations"/>
+</p>
 
-## Features
+A high-performance, fully responsive, single-page portfolio website for a general dentist — **Dr. Ahmed Wagdy Salama** — built with **Angular 18 Standalone Components** and **Tailwind CSS v3**. The site presents clinical casework, professional credentials, technical skills, and patient testimonials through an interactive, mobile-first interface featuring fluid site-wide animations matching advanced Framer Motion curve behaviors.
 
-### Sections
-| Section | Highlights |
-|---------|------------|
-| **Hero** | Tagline with staggered text entrance (0.1s delays), profile image with animated glow rings + 5s float loop, spring-entrance badge card (backOut 0.5s), WhatsApp CTA |
-| **About** | Professional background, clinical experience across 4 clinics, slide-in from left/right with 0.15s stagger |
-| **Education** | Certificate grid with unique SVG icons per credential, staggered scroll-reveal (i × 0.055s), spring icon hover (scale 1.18, rotate -6°) |
-| **Portfolio** | Tabbed before/after gallery (Restorative, Prosthodontics, Endodontics, Surgery, Bleaching), draggable before/after slider, lightbox viewer (AnimatePresence-style), staggered pair entrance (0.35s) |
-| **Skills** | Three grouped skill cards (Clinical, Professional & Technical, Software & Marketing) with staggered scroll-reveal (0.1s/0.2s/0.3s delays), spring icon hover |
-| **Testimonials** | Horizontal auto-scroll carousel with mouse/touch drag support, pause-on-hover, infinite loop, star ratings, 0.8s fade-in wrapper |
-| **Contact** | Appointment form (ReactiveForms with validation), clinic info, slide-in from opposite sides (0.6s easeOut), form success mount animation (scale 0.9 → 1) |
-| **Footer** | Social links, practice information, back-to-top |
+---
 
-### Interactive Elements
-- **Floating WhatsApp button** — Spring-entrance animation (cubic-bezier 0.34, 1.56, 0.64, 1) with 1.5s delay, persistent quick-contact, official WhatsApp SVG icon
-- **Sticky navbar** — Smooth-scroll navigation with active section tracking, host-level sticky positioning
-- **Before/after slider** — Drag-to-reveal comparison with lightbox image viewer (viewport-constrained via max-h-[80vh])
-- **Scroll-reveal animations** — IntersectionObserver-driven entrance animations across all sections with 6 duration variants (0.35s–0.8s), 4 direction variants (up, left, right, scale), spring backOut easing
+## 🚀 Key Features
 
-## Built With
+### Modern Architecture
+- Built entirely with **Angular Standalone Components** — lightweight bundles, optimal performance, no `NgModule` overhead.
+- Fully **typed** with strict-mode TypeScript across models, services, and components.
+- **Signal-based** state management (`@angular/core` signals) for reactive, efficient change detection.
+
+### Fluid Animations
+- Custom **`@angular/animations`** triggers and **cubic-bezier transitions** mirroring advanced Framer Motion behaviors.
+- **Staggered scroll-reveal** system with 6 duration variants (0.35s–0.8s), 4 direction variants (fade-up, slide-left, slide-right, scale), and spring `backOut` easing.
+- **Mount animations** for floating elements — elastic spring-entrance after configurable delay.
+- **Infinite float loops** on hero imagery, **spring icon hovers** (scale + rotate with `cubic-bezier(0.34, 1.56, 0.64, 1)`).
+- **Hover lift** on skill and education cards with precise `translateY` offsets.
+
+### Interactive Lightbox & Case Galleries
+- Full-screen image lightbox with crossfade transitions (`AnimatePresence`-style via Angular animations).
+- Tabbed before/after gallery for Restorative, Prosthodontics, Endodontics, Surgery, and Bleaching categories.
+- **Draggable before/after slider** — drag to reveal treatment outcomes.
+- "Show More" pagination for expanding galleries dynamically.
+
+### Sticky Dynamic Navbar
+- Blurred glass-morphism backdrop (`backdrop-blur-md bg-background/80`).
+- Host-level `sticky top-0 z-50` positioning for reliable pinning across all viewports.
+- Active section indicator with smooth CSS transition underline.
+- Mobile-responsive hamburger menu with animated toggle.
+
+### Floating CTA
+- WhatsApp quick-booking button with **spring entrance animation** (1.5s delay, elastic `cubic-bezier` curve).
+- **Official WhatsApp SVG icon** on `#25D366` brand green background.
+- Hover scale (1.1) and tap scale (0.93) feedback.
+
+### Seamless Personal Branding
+- Profile photo integrated across **Favicon**, **Navbar**, **Footer**, and **Hero** section.
+- Pixel-perfect aspect ratio via `object-cover` with circular masks.
+- Hero badge card spring-entrance with scale-up and translation.
+
+### Fully Responsive & Themed
+- **Mobile-first** responsive design using Tailwind breakpoints (`sm:`, `md:`, `lg:`, `xl:`).
+- **HSL-driven design tokens** for easy theme customization.
+- Polished typography scale: **Playfair Display** (serif headings) + **Inter** (sans body).
+
+---
+
+## 🛠️ Tech Stack
 
 | Technology | Purpose |
 |------------|---------|
-| Angular 18 | Framework (standalone APIs, signals) |
-| TypeScript | Language (strict mode) |
-| Tailwind CSS v3 | Utility-first styling via PostCSS |
-| SCSS | Global styles, CSS custom properties, keyframes |
-| PostCSS + autoprefixer | Tailwind compilation & vendor prefixes |
-| RxJS | Reactive data handling |
-| Angular ReactiveForms | Form validation & submission |
-| Google Fonts (Inter + Playfair Display) | Typography |
+| **Angular 18.2** | Frontend framework (standalone APIs, signals) |
+| **TypeScript 5.5** | Language (strict mode) |
+| **Tailwind CSS v3** | Utility-first styling via PostCSS |
+| **PostCSS 8 + Autoprefixer** | Tailwind compilation & vendor prefixing |
+| **Angular Animations** | `@angular/animations` browser module for mount/leave triggers |
+| **RxJS** | Reactive data patterns |
+| **Angular ReactiveForms** | Form validation & submission |
+| **Google Fonts** | Inter (body) + Playfair Display (headings) |
+| **Lucide Icons** | Custom inline SVG icon system |
 
-## Getting Started
+---
 
-```bash
-# Install dependencies
-npm install
-
-# Start dev server at http://localhost:4200
-npm start
-
-# Production build — outputs to dist/
-npm run build
-```
-
-## Project Structure
+## 📂 Project Structure
 
 ```
 src/
 ├── app/
 │   ├── components/
-│   │   ├── about/              # About section (2-col grid, quote, Stethoscope card)
-│   │   ├── contact/            # Contact form + map placeholder + WhatsApp CTA
-│   │   ├── education/          # 11-card grid with unique SVG icons
-│   │   ├── footer/             # 3-col grid with Quick Links & Connect
-│   │   ├── hero/               # Radial-gradient bg, staggered text, badge card
-│   │   ├── navbar/             # Sticky nav, backdrop-blur, active underline
-│   │   ├── portfolio/          # Tabbed before/after gallery, PairedGallery, grids
-│   │   ├── shared/             # Reusable components
-│   │   │   ├── before-after-slider/  # Drag-to-reveal comparison
-│   │   │   ├── floating-whatsapp/    # Spring-entrance WhatsApp button
-│   │   │   └── lightbox/             # Scrollable full-screen image viewer
-│   │   ├── skills/             # border-t-4 colored skill group cards
-│   │   └── testimonials/       # Drag + auto-scroll carousel with star ratings
+│   │   ├── about/                    # About section — 2-col grid, slide-in
+│   │   ├── contact/                  # Contact form + map + WhatsApp CTA
+│   │   ├── education/                # 11-card certificate grid (staggered)
+│   │   ├── footer/                   # 3-col footer with branding + links
+│   │   ├── hero/                     # Hero banner — radial gradient, badge card
+│   │   ├── navbar/                   # Sticky nav — backdrop-blur, active link
+│   │   ├── portfolio/                # Tabbed gallery + lightbox + slider
+│   │   ├── shared/
+│   │   │   ├── before-after-slider/  # Drag-to-reveal image comparison
+│   │   │   ├── floating-whatsapp/    # Spring-entrance WhatsApp FAB
+│   │   │   └── lightbox/             # AnimatePresence-style image modal
+│   │   ├── skills/                   # 3 grouped skill cards
+│   │   └── testimonials/             # Auto-scroll carousel + drag support
 │   ├── directives/
-│   │   └── scroll-reveal.directive.ts  # IntersectionObserver directive
-│   ├── models/                 # TypeScript interfaces
-│   ├── services/               # Portfolio data + shared constants
-│   └── app.component.ts        # Root component (inline template)
-├── assets/                     # Images organized by category
-├── index.html                  # Entry point with Google Fonts
-├── main.ts                     # App bootstrap + global scroll observer
-├── postcss.config.js           # PostCSS (tailwindcss + autoprefixer)
-├── tailwind.config.js          # Tailwind v3 config with HSL variables
-└── styles.scss                 # Tailwind directives, CSS vars, keyframes
+│   │   └── scroll-reveal.directive.ts  # IntersectionObserver + CSS class toggling
+│   ├── models/                       # TypeScript interfaces
+│   ├── services/                     # Portfolio data + shared constants
+│   └── app.component.ts              # Root component (inline template)
+├── assets/                           # Profile photos, case images, videos
+├── index.html                        # Entry point + Google Fonts
+├── main.ts                           # App bootstrap + global scroll observer
+├── postcss.config.js                 # PostCSS plugins (tailwindcss, autoprefixer)
+├── tailwind.config.js                # Tailwind v3 config with HSL tokens
+└── styles.scss                       # Tailwind directives + CSS variables + keyframes
 ```
 
-## Design System
+---
 
-- **Color palette**: HSL-driven via CSS custom properties — dark navy primary (`hsl(222 47% 11%)`), teal secondary (`hsl(200 98% 39%)`), gold accent (`hsl(43 74% 49%)`)
-- **Fonts**: Playfair Display (headings), Inter (body)
-- **Responsive**: Mobile-first with Tailwind responsive prefixes, fully adaptive layout
-- **Animations**: `fadeInUp`, `scaleIn`, `float` (5s loop), `pulse-glow` keyframes; scroll-triggered `reveal`/`revealed` classes with 6 duration variants (`fast`: 0.35s, `medium`: 0.45s, default: 0.6s, `slow`: 0.7s, `xslow`: 0.8s) and 4 direction variants (up, left slide -30px, right slide +30px, scale 0.92); spring backOut badge entrance (`cubic-bezier(0.34, 1.56, 0.64, 1)`); spring icon hovers (scale+rotate); form success mount animation
-- **Icons**: Custom inline SVGs throughout (lucide-style); official WhatsApp brand icon
+## 💻 Getting Started
 
-## Contact
+### Prerequisites
+- **Node.js** 18+ and **npm** 9+
 
-- **Dr. Ahmed Wagdy Salama** — General Dentist
+### Installation
+
+```bash
+# 1. Clone the repository
+git clone https://github.com/EsraaShiref/dental-portfolio.git
+
+# 2. Navigate into the project
+cd dental-portfolio
+
+# 3. Install dependencies
+npm install
+
+# 4. Start the development server
+npm start
+```
+
+The development server will launch at **`http://localhost:4200`** with hot-reload.
+
+### Production Build
+
+```bash
+npm run build
+```
+
+Output is written to `dist/dental-portfolio-angular/browser/`. The production build includes optimized bundles, hashed assets, and inlined Google Fonts.
+
+---
+
+## ⚙️ Configuration & Customization
+
+### Theme Colors
+All primary, secondary, accent, and surface colors are defined as **HSL CSS custom properties** in `src/styles.scss`:
+
+```css
+:root {
+  --background: 210 40% 98%;   /* Light surface */
+  --foreground: 222 47% 11%;   /* Dark navy text */
+  --primary: 222 47% 11%;      /* Dark navy */
+  --secondary: 200 98% 39%;    /* Teal */
+  --accent: 43 74% 49%;        /* Gold */
+  --border: 214 32% 91%;
+  --radius: 0.5rem;
+}
+```
+
+Tailwind references these via `hsl(var(--color))` in `tailwind.config.js`. Adjust the HSL values to rebrand the entire site.
+
+### Profile & Case Assets
+Replace images in `src/assets/` to personalize:
+- `assets/ahmed-profile.png` — Hero / Navbar / Footer / Favicon profile photo
+- `assets/cases/` — Clinical before/after casework images
+- `assets/videos/` — Prosthodontics demonstration video
+
+### Content
+Edit `src/app/services/portfolio-data.service.ts` to update:
+- Doctor contact details (phone, email, WhatsApp link)
+- Testimonials, skills, education certificates
+- Gallery image arrays per category
+
+---
+
+## 🎨 Design System
+
+| Token | Value | Usage |
+|-------|-------|-------|
+| `--background` | `210 40% 98%` | Page background |
+| `--foreground` | `222 47% 11%` | Primary text |
+| `--primary` | `222 47% 11%` | Dark nav / footer |
+| `--secondary` | `200 98% 39%` | CTAs, accents |
+| `--accent` | `43 74% 49%` | Gold highlights |
+| `--font-sans` | `Inter` | Body text |
+| `--font-serif` | `Playfair Display` | Headings |
+
+**Animation Timing Map:**
+
+| Variant | Duration | Easing | Used In |
+|---------|----------|--------|---------|
+| `reveal` (default) | 0.6s | `cubic-bezier(0.34, 1.56, 0.64, 1)` | Hero, About, Contact |
+| `reveal-fast` | 0.35s | `cubic-bezier(0.4, 0, 0.2, 1)` | Education, Portfolio |
+| `reveal-medium` | 0.45s | `cubic-bezier(0.4, 0, 0.2, 1)` | Skills |
+| `reveal-slow` | 0.7s | `cubic-bezier(0, 0, 0.2, 1)` | Hero image |
+| `reveal-xslow` | 0.8s | default | Testimonials wrapper |
+| `reveal-badge` | 0.5s | backOut spring | Hero badge card |
+
+---
+
+## 📬 Contact
+
+**Dr. Ahmed Wagdy Salama** — General Dentist
+
 - **Location**: Tanta, Egypt
 - **Email**: [wagdyahmed304@gmail.com](mailto:wagdyahmed304@gmail.com)
 - **Phone**: [+201028654881](tel:+201028654881)
 - **WhatsApp**: [wa.me/201028654881](https://wa.me/201028654881?text=Hello%20Dr.%20Ahmed,%20I%20would%20like%20to%20book%20an%20appointment)
+
+---
+
+<p align="center">
+  Built with ❤️ using Angular 18 · Tailwind CSS · TypeScript
+</p>
