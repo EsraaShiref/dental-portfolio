@@ -1,0 +1,31 @@
+<section id="skills" class="skills">
+  <div class="container">
+    <div class="section-header">
+      <h2>Core Competencies</h2>
+      <div class="divider"></div>
+    </div>
+
+    <div class="skills-grid">
+      @for (group of skillGroups; track group.title) {
+        <div class="skill-card card" [class]="group.colorClass">
+          <div class="skill-card-body">
+            <div class="skill-icon" [class]="group.iconBg">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M4.8 2.3A.3.3 0 1 0 5 2H4a2 2 0 0 0-2 2v5a6 6 0 0 0 6 6v0a6 6 0 0 0 6-6V4a2 2 0 0 0-2-2h-1a.2.2 0 1 0 .3.3"/>
+                <path d="M8 15v1a6 6 0 0 0 6 6v0a6 6 0 0 0 6-6v-4"/>
+                <circle cx="20" cy="10" r="2"/>
+              </svg>
+            </div>
+            <h3>{{ group.title }}</h3>
+            <p class="skill-desc">{{ group.desc }}</p>
+            <div class="skill-badges">
+              @for (skill of group.skills; track skill) {
+                <span class="badge" [class]="group.badgeClass">{{ skill }}</span>
+              }
+            </div>
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+</section>

@@ -1,0 +1,132 @@
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  backdrop-filter: blur(12px);
+  background: rgba(var(--background-rgb, 246, 249, 252), 0.85);
+  border-bottom: 1px solid var(--border);
+  transition: all 0.3s;
+}
+
+.navbar-inner {
+  height: 5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+}
+
+.logo-badge {
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 9999px;
+  background: var(--primary);
+  color: var(--primary-foreground);
+  font-family: var(--font-serif);
+  font-weight: 700;
+  font-size: 1.1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.logo-name {
+  font-family: var(--font-serif);
+  font-weight: 600;
+  font-size: 1.1rem;
+  display: none;
+
+  @media (min-width: 640px) {
+    display: block;
+  }
+}
+
+.nav-links {
+  display: none;
+  align-items: center;
+  gap: 1.5rem;
+
+  @media (min-width: 768px) {
+    display: flex;
+  }
+}
+
+.nav-link {
+  position: relative;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--muted-foreground);
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.25rem;
+  transition: color 0.2s;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: var(--font-sans);
+
+  &:hover, &.active {
+    color: var(--primary);
+  }
+
+  &.active {
+    font-weight: 600;
+  }
+}
+
+.underline-indicator {
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--secondary);
+  border-radius: 9999px;
+}
+
+.mobile-toggle {
+  display: flex;
+  padding: 0.5rem;
+  color: var(--foreground);
+  border-radius: 0.375rem;
+
+  @media (min-width: 768px) {
+    display: none;
+  }
+}
+
+.mobile-menu {
+  padding: 1rem 1.5rem;
+  border-top: 1px solid var(--border);
+  background: var(--background);
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+
+  .mobile-link {
+    text-align: left;
+    padding: 0.75rem 0;
+    font-weight: 500;
+    border-bottom: 1px solid var(--border);
+    color: var(--foreground);
+    background: none;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    cursor: pointer;
+    font-family: var(--font-sans);
+    font-size: 0.875rem;
+    transition: color 0.2s;
+
+    &:last-of-type { border-bottom: none; }
+    &:hover { color: var(--secondary); }
+  }
+
+  .w-full { width: 100%; margin-top: 0.5rem; }
+}

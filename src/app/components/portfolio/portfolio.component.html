@@ -1,0 +1,192 @@
+<section id="portfolio" class="portfolio">
+  <div class="container">
+    <div class="section-header">
+      <h2>Clinical Portfolio</h2>
+      <div class="divider" style="background:var(--accent)"></div>
+      <p>Each case is presented as an interactive Before &amp; After comparison. Drag the handle to reveal the treatment outcome.</p>
+    </div>
+
+    <!-- Tabs -->
+    <div class="tabs-bar">
+      @for (tab of tabs; track tab.value) {
+        <button
+          class="tab-btn"
+          [class.active]="activeTab() === tab.value"
+          (click)="activeTab.set(tab.value)"
+        >
+          {{ tab.label }}
+        </button>
+      }
+    </div>
+
+    <!-- ── Restorative ── -->
+    @if (activeTab() === 'restorative') {
+      <div class="tab-intro">
+        <h3>Restorative Dentistry</h3>
+        <p>Composite restorations, direct bonding, and esthetic reconstruction. Drag the slider to compare before and after.</p>
+      </div>
+      <div class="gallery-grid">
+        @for (pair of getPairs(data.restorativeImages, 'restorative'); track pair.index) {
+          @if (pair.after) {
+            <app-before-after-slider
+              [before]="pair.before"
+              [after]="pair.after"
+              [caseNumber]="pair.index / 2 + 1"
+              (beforeClick)="openLightbox(data.restorativeImages, pair.index)"
+              (afterClick)="openLightbox(data.restorativeImages, pair.index + 1)"
+            />
+          } @else {
+            <div class="standalone-card" (click)="openLightbox(data.restorativeImages, pair.index)">
+              <div class="standalone-header">
+                <span>Case #{{ pair.index / 2 + 1 }}</span>
+                <span>Clinical View</span>
+              </div>
+              <div class="standalone-img-wrap">
+                <img [src]="pair.before.src" [alt]="pair.before.label" loading="lazy" />
+                <div class="zoom-overlay">
+                  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                    <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35M11 8v6M8 11h6"/>
+                  </svg>
+                </div>
+              </div>
+            </div>
+          }
+        }
+      </div>
+      @if (hasMore(data.restorativeImages, 'restorative')) {
+        <div class="show-more">
+          <button class="btn btn-outline btn-rounded" (click)="showMore('restorative')">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
+            Show More ({{ remaining(data.restorativeImages, 'restorative') }} more cases)
+          </button>
+        </div>
+      }
+    }
+
+    <!-- ── Prosthodontics ── -->
+    @if (activeTab() === 'prosthodontics') {
+      <div class="tab-intro">
+        <h3>Prosthodontics</h3>
+        <p>Fixed prosthodontics, crown preparations, and full-arch restorations.</p>
+      </div>
+      <!-- Video -->
+      <div class="video-wrap">
+        <video controls preload="metadata" class="case-video">
+          <source [src]="data.prosthodonticsVideo" type="video/mp4" />
+          عذراً، متصفحك لا يدعم تشغيل الفيديو.
+        </video>
+      </div>
+      <div class="gallery-grid">
+        @for (pair of getPairs(data.prosthodonticsImages, 'prosthodontics'); track pair.index) {
+          @if (pair.after) {
+            <app-before-after-slider
+              [before]="pair.before"
+              [after]="pair.after"
+              [caseNumber]="pair.index / 2 + 1"
+              (beforeClick)="openLightbox(data.prosthodonticsImages, pair.index)"
+              (afterClick)="openLightbox(data.prosthodonticsImages, pair.index + 1)"
+            />
+          } @else {
+            <div class="standalone-card" (click)="openLightbox(data.prosthodonticsImages, pair.index)">
+              <div class="standalone-header"><span>Case #{{ pair.index / 2 + 1 }}</span><span>Clinical View</span></div>
+              <div class="standalone-img-wrap">
+                <img [src]="pair.before.src" [alt]="pair.before.label" loading="lazy" />
+                <div class="zoom-overlay"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35M11 8v6M8 11h6"/></svg></div>
+              </div>
+            </div>
+          }
+        }
+      </div>
+    }
+
+    <!-- ── Endodontics ── -->
+    @if (activeTab() === 'endodontics') {
+      <div class="tab-intro">
+        <h3>Endodontics</h3>
+        <p>Root canal treatments and radiographs gallery.</p>
+      </div>
+      <div class="endo-grid">
+        @for (img of data.endodonticImages; track img.src; let i = $index) {
+          <div class="endo-item" (click)="openLightbox(data.endodonticImages, i)">
+            <img [src]="img.src" [alt]="img.label" loading="lazy" />
+            <p>{{ img.label }}</p>
+          </div>
+        }
+      </div>
+    }
+
+    <!-- ── Surgery ── -->
+    @if (activeTab() === 'surgery') {
+      <div class="tab-intro">
+        <h3>Oral Surgery</h3>
+        <p>Minor surgical cases with before and after documentation.</p>
+      </div>
+      <div class="gallery-grid">
+        @for (pair of getPairs(data.surgeryImages, 'surgery'); track pair.index) {
+          @if (pair.after) {
+            <app-before-after-slider
+              [before]="pair.before"
+              [after]="pair.after"
+              [caseNumber]="pair.index / 2 + 1"
+              (beforeClick)="openLightbox(data.surgeryImages, pair.index)"
+              (afterClick)="openLightbox(data.surgeryImages, pair.index + 1)"
+            />
+          } @else {
+            <div class="standalone-card" (click)="openLightbox(data.surgeryImages, pair.index)">
+              <div class="standalone-header"><span>Case #{{ pair.index / 2 + 1 }}</span><span>Clinical View</span></div>
+              <div class="standalone-img-wrap">
+                <img [src]="pair.before.src" [alt]="pair.before.label" loading="lazy" />
+                <div class="zoom-overlay"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35M11 8v6M8 11h6"/></svg></div>
+              </div>
+            </div>
+          }
+        }
+      </div>
+      @if (hasMore(data.surgeryImages, 'surgery')) {
+        <div class="show-more">
+          <button class="btn btn-outline btn-rounded" (click)="showMore('surgery')">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
+            Show More ({{ remaining(data.surgeryImages, 'surgery') }} more cases)
+          </button>
+        </div>
+      }
+    }
+
+    <!-- ── Bleaching ── -->
+    @if (activeTab() === 'bleaching') {
+      <div class="tab-intro">
+        <h3>Dental Bleaching</h3>
+        <p>Laser bleaching — documented cases showing significant shade improvement.</p>
+      </div>
+      <div class="bleaching-grid">
+        @for (img of data.bleachingImages; track img.src; let i = $index) {
+          <div class="bleaching-item" (click)="openLightbox(data.bleachingImages, i)">
+            <div class="bleaching-img-wrap">
+              <img [src]="img.src" [alt]="img.label" loading="lazy" />
+              <div class="zoom-overlay">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35M11 8v6M8 11h6"/></svg>
+              </div>
+            </div>
+            <div class="bleaching-info">
+              <span class="bleaching-badge">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                Laser Bleaching
+              </span>
+              <h4>Case {{ i + 1 }}</h4>
+              <p>Significant shade improvement achieved</p>
+            </div>
+          </div>
+        }
+      </div>
+    }
+  </div>
+
+  <!-- Lightbox -->
+  @if (lightboxOpen()) {
+    <app-lightbox
+      [images]="lightboxImages()"
+      [initialIndex]="lightboxIndex()"
+      (close)="closeLightbox()"
+    />
+  }
+</section>

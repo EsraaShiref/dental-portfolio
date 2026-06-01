@@ -1,0 +1,53 @@
+<nav class="navbar">
+  <div class="container navbar-inner">
+    <!-- Logo -->
+    <div class="logo" (click)="scrollTo('hero')">
+      <div class="logo-badge">AS</div>
+      <span class="logo-name">Dr. Ahmed Wagdy Salama</span>
+    </div>
+
+    <!-- Desktop Links -->
+    <div class="nav-links">
+      @for (link of data.navLinks; track link.href) {
+        <button
+          class="nav-link"
+          [class.active]="activeSection() === link.href"
+          (click)="scrollTo(link.href)"
+        >
+          {{ link.name }}
+          @if (activeSection() === link.href) {
+            <span class="underline-indicator"></span>
+          }
+        </button>
+      }
+      <button class="btn btn-secondary btn-rounded" (click)="scrollTo('contact')">
+        Book Appointment
+      </button>
+    </div>
+
+    <!-- Mobile Toggle -->
+    <button class="mobile-toggle" (click)="toggleMobile()">
+      @if (mobileOpen()) {
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M18 6 6 18M6 6l12 12"/>
+        </svg>
+      } @else {
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M4 6h16M4 12h16M4 18h16"/>
+        </svg>
+      }
+    </button>
+  </div>
+
+  <!-- Mobile Menu -->
+  @if (mobileOpen()) {
+    <div class="mobile-menu">
+      @for (link of data.navLinks; track link.href) {
+        <button class="mobile-link" (click)="scrollTo(link.href)">{{ link.name }}</button>
+      }
+      <button class="btn btn-primary w-full" (click)="scrollTo('contact')">
+        Book Appointment
+      </button>
+    </div>
+  }
+</nav>
